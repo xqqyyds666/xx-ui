@@ -1,0 +1,16 @@
+---
+version: "3"
+
+services:
+  xx-ui:
+    image: ghcr.io/xqqman/xx-ui:latest
+    container_name: xx-ui
+    hostname: yourhostname
+    volumes:
+      - $PWD/db/:/etc/x-ui/
+      - $PWD/cert/:/root/cert/
+    environment:
+      XRAY_VMESS_AEAD_FORCED: "false"
+    tty: true
+    network_mode: host
+    restart: unless-stopped
